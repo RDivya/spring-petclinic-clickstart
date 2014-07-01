@@ -465,6 +465,9 @@
                             </goals>
                         </execution>
                     </executions>
+                    <configuration>
+                    	<useOldTestEndDetection>true</useOldTestEndDetection>
+                    </configuration>
                 </plugin>
 		</plugins>
 	</build>
