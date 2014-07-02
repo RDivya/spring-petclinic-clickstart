@@ -476,6 +476,7 @@
                             <artifactId>jmeter-plugins</artifactId>
                         </plugin>
                     </jmeterPlugins>
+                    <suppressJMeterOutput>false</suppressJMeterOutput>
 
                     </configuration>
                      <dependencies>
