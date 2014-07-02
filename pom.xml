@@ -457,17 +457,57 @@
                     <artifactId>jmeter-maven-plugin</artifactId>
                     <version>1.9.1</version>
                     <executions>
-                        <execution>
-                            <id>jmeter-tests</id>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>jmeter</goal>
-                            </goals>
-                        </execution>
+                      <execution>
+                        <id>execute-jmeter-tests</id>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                        <phase>integration-test</phase>
+                    </execution>
                     </executions>
                     <configuration>
                     	<useOldTestEndDetection>true</useOldTestEndDetection>
+                    	<systemProperties>
+             				 <java.awt.headless>true</java.awt.headless>
+            			</systemProperties>
+            			 <jmeterPlugins>
+                        <plugin>
+                            <groupId>kg.apc</groupId>
+                            <artifactId>jmeter-plugins</artifactId>
+                        </plugin>
+                    </jmeterPlugins>
+
                     </configuration>
+                     <dependencies>
+    <dependency>
+      <groupId>kg.apc</groupId>
+      <artifactId>jmeter-plugins</artifactId>
+      <version>1.0.0</version>
+      <exclusions>
+         <!--
+            Unfortunately some transitive dependencies cannot be found on mvncentral
+            and we have to explicitly exclude them.
+            For a complete list, see https://github.com/mlex/jmeter-maven-example/
+        -->
+        <exclusion>
+            <groupId>kg.apc</groupId>
+            <artifactId>perfmon</artifactId>
+        </exclusion>
+        <!-- ... -->
+ 
+        <!--
+            Because of a bug in the jmeter-maven-plugin (see 
+            https://github.com/Ronnie76er/jmeter-maven-plugin/issues/77) we have to
+            exclude jmeter dependencies here, too.
+        -->
+        <exclusion>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>jorphan</artifactId>
+        </exclusion>
+        <!-- ... -->
+      </exclusions>
+    </dependency>
+  </dependencies>
                 </plugin>
 		</plugins>
 	</build>
