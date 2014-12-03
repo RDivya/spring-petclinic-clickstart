@@ -515,7 +515,9 @@
 	<distributionManagement>
     <repository>
       <id>valentina-snapshot</id>
-
+      <id>valentina-snapshot</id>
+       <name>valentina Release Repository</name>
+       <url>https://repository-valentina.forge.cloudbees.com/snapshot/</url>
     </repository>
   </distributionManagement>
 
