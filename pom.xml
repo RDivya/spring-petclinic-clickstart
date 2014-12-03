@@ -512,5 +512,11 @@
                 </plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+    <repository>
+      <id>valentina-snapshot</id>
+
+    </repository>
+  </distributionManagement>
 
 </project>
